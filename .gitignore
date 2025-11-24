@@ -1,0 +1,8 @@
+﻿backend/db/serviceAccountKey.json
+*.json
+*.pkl
+__pycache__/
+.env
+*.key
+*.pem
+serviceAccountKey.json

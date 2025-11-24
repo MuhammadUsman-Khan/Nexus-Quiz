@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusQuiz Pro - Premium Learning Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Watermark -->
+    <div class="watermark">Developed by Muhammad Usman Khan</div>
+
+    <!-- Advanced Animated Background -->
+    <div class="animated-bg"></div>
+    
+    <!-- Grid Overlay -->
+    <div class="grid-overlay"></div>
+    
+    <!-- Enhanced Floating Particles -->
+    <div class="particles" id="particles-container"></div>
+
+    <!-- Enhanced Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <div class="logo-text">NexusQuiz</div>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn active" onclick="showSection('dashboard')">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-btn" onclick="showSection('quiz')">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Take Quiz</span>
+                </button>
+                <button class="nav-btn" onclick="showSection('results')">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Results</span>
+                </button>
+                <button class="nav-btn" id="adminBtn" style="display:none;" onclick="showSection('admin')">
+                    <i class="fas fa-crown"></i>
+                    <span>Admin</span>
+                </button>
+                <button class="nav-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Login Section -->
+        <div id="login" class="section active">
+            <div class="glass-card auth-container fade-in">
+                <div class="auth-header">
+                    <h1 class="auth-title">Welcome to NexusQuiz Pro</h1>
+                    <p class="auth-subtitle">Sign in to your premium account</p>
+                </div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" id="loginEmail" class="form-input" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="loginPassword" class="form-input" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+                        Sign In
+                    </button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" onclick="showSection('register')" class="auth-link">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Section -->
+        <div id="register" class="section">
+            <div class="glass-card auth-container fade-in">
+                <div class="auth-header">
+                    <h1 class="auth-title">Create Pro Account</h1>
+                    <p class="auth-subtitle">Join NexusQuiz Pro today</p>
+                </div>
+                
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" id="registerName" class="form-input" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" id="registerEmail" class="form-input" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="registerPassword" class="form-input" placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Role</label>
+                        <select id="registerRole" class="form-input">
+                            <option value="student">Student</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+                        Create Account
+                    </button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="#" onclick="showSection('login')" class="auth-link">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="section">
+            <div class="dashboard">
+                <div class="dashboard-header fade-in">
+                    <h1 class="dashboard-title">Welcome back, <span class="text-glow" id="userName">Alex!</span></h1>
+                    <p class="dashboard-subtitle">Continue your premium learning journey with advanced content and analytics</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="glass-card stat-card fade-in">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-value" id="totalPoints">0</div>
+                        <div class="stat-label">TOTAL POINTS</div>
+                    </div>
+                    
+                    <div class="glass-card stat-card fade-in">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-value" id="quizzesCompleted">0</div>
+                        <div class="stat-label">QUIZZES COMPLETED</div>
+                    </div>
+                    
+                    <div class="glass-card stat-card fade-in">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-value" id="averageScore">0%</div>
+                        <div class="stat-label">AVERAGE SCORE</div>
+                    </div>
+                    
+                    <div class="glass-card stat-card fade-in">
+                        <div class="stat-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="stat-value" id="currentStreak">0</div>
+                        <div class="stat-label">CURRENT STREAK</div>
+                    </div>
+                </div>
+
+                <div class="glass-card progress-section fade-in">
+                    <h3 class="progress-title">Your Learning Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>Completed: <span id="completedModules">0</span>/<span id="totalModules">0</span> modules</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+
+                <div class="glass-card fade-in" style="text-align: center; padding: 60px;">
+                    <h2 style="margin-bottom: 25px; font-size: 32px;">Ready for your next challenge?</h2>
+                    <p style="margin-bottom: 40px; color: var(--text-secondary);">Test your knowledge with our latest premium quiz featuring advanced questions</p>
+                    <button class="btn btn-primary btn-large" onclick="startNewQuiz()">
+                        <i class="fas fa-play" style="margin-right: 15px;"></i>
+                        Start New Quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quiz" class="section">
+            <div class="quiz-container">
+                <div class="glass-card quiz-header fade-in">
+                    <h1 class="quiz-title" id="quizTitle">Loading Quiz...</h1>
+                    <div class="quiz-meta">
+                        <div class="meta-item">
+                            <div class="meta-label">QUESTION</div>
+                            <div class="meta-value" id="currentQuestion">1/10</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label">SCORE</div>
+                            <div class="meta-value" id="currentScore">0</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label">DIFFICULTY</div>
+                            <div class="meta-value" id="currentDifficulty">-</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card question-card fade-in">
+                    <div class="question-text" id="questionText">
+                        Loading question...
+                    </div>
+                    
+                    <div class="options-grid" id="optionsContainer">
+                        <!-- Options will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="quiz-actions">
+                        <button class="btn btn-secondary" onclick="endQuizEarly()">
+                            <i class="fas fa-flag"></i>
+                            End Quiz
+                        </button>
+                        <button class="btn btn-primary" onclick="submitAnswer()">
+                            Submit Answer
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="section">
+            <div class="results-container">
+                <div class="glass-card fade-in">
+                    <div class="results-header">
+                        <h1 class="results-title">Quiz Completed!</h1>
+                        <p class="results-subtitle" id="resultsSubtitle">You've successfully finished the quiz</p>
+                        <div class="score-display" id="finalScoreDisplay">0</div>
+                        <p style="color: var(--text-secondary);" id="resultsMessage">Your final score</p>
+                    </div>
+                    
+                    <div class="results-grid">
+                        <div class="glass-card result-card fade-in">
+                            <div class="result-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <div class="result-value" id="totalQuestions">0</div>
+                            <div class="result-label">QUESTIONS</div>
+                        </div>
+                        
+                        <div class="glass-card result-card fade-in">
+                            <div class="result-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="result-value" id="correctAnswers">0</div>
+                            <div class="result-label">CORRECT</div>
+                        </div>
+                        
+                        <div class="glass-card result-card fade-in">
+                            <div class="result-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="result-value" id="accuracyRate">0%</div>
+                            <div class="result-label">ACCURACY</div>
+                        </div>
+                        
+                        <div class="glass-card result-card fade-in">
+                            <div class="result-icon">
+                                <i class="fas fa-level-up-alt"></i>
+                            </div>
+                            <div class="result-value" id="nextDifficulty">-</div>
+                            <div class="result-label">NEXT LEVEL</div>
+                        </div>
+                    </div>
+                    
+                    <div class="results-actions">
+                        <button class="btn btn-primary btn-large" onclick="showSection('dashboard')">
+                            <i class="fas fa-home"></i>
+                            Back to Dashboard
+                        </button>
+                        <button class="btn btn-secondary btn-large" onclick="startNewQuiz()">
+                            <i class="fas fa-redo"></i>
+                            Try Another Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Section -->
+        <div id="admin" class="section">
+            <div class="admin-container">
+                <div class="glass-card fade-in">
+                    <div class="dashboard-header">
+                        <h1 class="dashboard-title">Admin Panel</h1>
+                        <p class="dashboard-subtitle">Manage questions, users, and system settings</p>
+                    </div>
+
+                    <div class="admin-grid">
+                        <div class="glass-card admin-card fade-in">
+                            <div class="stat-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>Question Bank</h3>
+                            <p>Manage quiz questions</p>
+                            <button class="btn btn-secondary" onclick="showQuestionManager()">Manage Questions</button>
+                        </div>
+                        
+                        <div class="glass-card admin-card fade-in">
+                            <div class="stat-icon">
+                                <i class="fas fa-cloud-download-alt"></i>
+                            </div>
+                            <h3>Import Questions</h3>
+                            <p>Add questions from API</p>
+                            <button class="btn btn-primary" onclick="importFromAPI()">Import from API</button>
+                        </div>
+                        
+                        <div class="glass-card admin-card fade-in">
+                            <div class="stat-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h3>Analytics</h3>
+                            <p>View system statistics</p>
+                            <button class="btn btn-secondary" onclick="showSystemStats()">View Analytics</button>
+                        </div>
+                    </div>
+
+                    <!-- Question Management -->
+                    <div id="questionManager" class="management-section" style="display: none;">
+                        <h3>Question Management</h3>
+                        <div id="questionsList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
