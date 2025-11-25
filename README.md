@@ -206,8 +206,8 @@ POST	  /api/quiz/end-quiz	        Finalize session and generate feedback
 ```
 Method	    Endpoint	                        Description
 POST	  /api/users/register	    User registration with secure authentication
-POST	  /api/users/login	      User login and session management
-GET	    /api/users/{email}	    Retrieve user profile and history
+POST	  /api/users/login	        User login and session management
+GET	      /api/users/{email}	    Retrieve user profile and history
 ```
 ### Question Bank
 ```
@@ -219,7 +219,7 @@ DELETE	  /api/questions/{id}	                  Remove question from bank
 ```
 ### Analytics & Results
 ```
-Method  	Endpoint	    Description
-GET	  /api/results/user/{email}	  Get user's quiz history and progress
-GET  	/api/results/all	  System-wide analytics (Admin only)
+Method  	    Endpoint	                            Description
+GET	    /api/results/user/{email}	      Get user's quiz history and progress
+GET  	  /api/results/all	              System-wide analytics (Admin only)
 ```
