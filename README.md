@@ -373,7 +373,6 @@ Open a Pull Request
 
 ## 👨‍💻 Developer
 **Muhammad Usman Khan**
-**ML DEVELOPER**
 
 GitHub: **@MuhammadUsman-Khan**
 
