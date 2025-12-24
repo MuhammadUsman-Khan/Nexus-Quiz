@@ -3,9 +3,10 @@ from firebase_admin import credentials, firestore
 import os
 
 try:
-    current_dir = os.path.dirname(__file__)
-    json_path = os.path.join(current_dir, "serviceAccountKey.json")
+    json_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
 
+    if not json_path:
+        raise ValueError("GOOGLE_APPLICATION_CREDENTIALS environment variable not set")
 
     cred = credentials.Certificate(json_path)
     firebase_admin.initialize_app(cred)
@@ -22,3 +23,4 @@ except Exception as e:
     users_collection = None
     questions_collection = None
     results_collection = None
+    quizzes_collection = None
