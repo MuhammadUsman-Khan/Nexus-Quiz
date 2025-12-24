@@ -1,0 +1,11 @@
+services:
+  backend:
+    build: .
+    container_name: nexus-quiz-backend
+    ports:
+      - "8000:8000"
+    environment:
+      # Mount Firebase service account key as a secret
+      - GOOGLE_APPLICATION_CREDENTIALS=/run/secrets/serviceAccountKey.json
+    volumes:
+      - ./serviceAccountKey.json:/run/secrets/serviceAccountKey.json:ro
