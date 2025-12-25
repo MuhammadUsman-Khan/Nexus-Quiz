@@ -2,14 +2,15 @@
 ![NexusQuiz](https://img.shields.io/badge/NexusQuiz-red?style=for-the-badge&logo=ai)
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python)
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
-![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-FF5F1F?style=for-the-badge&logo=Firebase&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Machine Learning](https://img.shields.io/badge/Machine%20Learning-FF6B6B?style=for-the-badge&logo=ai&logoColor=white)
 ![Scikit-learn](https://img.shields.io/badge/ML-Scikit--learn-orange?style=for-the-badge&logo=scikit-learn)
 
-#### An intelligent Quiz system that dynamically adjusts question difficulty using **Machine learning**. Features real-time performance adaptation, comprehensive analytics, and a stunning glassmorphism UI. Built with **FastAPI, Firebase**, and modern **JavaScript.**
+#### An intelligent Quiz system that dynamically adjusts question difficulty using **Machine learning**. Features real-time performance adaptation, comprehensive analytics, and a stunning glassmorphism UI. The backend is **Dockerized** and built with **FastAPI, Firebase**, and modern **JavaScript.**
 
 ---
 
@@ -53,6 +54,8 @@
 - **Python** - Core programming language
 
 - **FastAPI** - Modern, high-performance web framework
+
+- **Docker** – Containerized backend for consistent and scalable deployment
 
 - **Scikit-Learn** - Machine learning for difficulty prediction
 
@@ -101,6 +104,8 @@ Nexus-Quiz/
 │   ├── index.html            # Main application
 │   ├── style.css             # Glassmorphism styles
 │   └── app.js               # Frontend logic
+├── Dockerfile                 # Backend container definition
+├── docker-compose.yml         # Multi-container orchestration
 └── requirements.txt          # Python dependencies
 ```
 
@@ -129,6 +134,48 @@ Nexus-Quiz/
 ---
 
 ## 🔧 Installation & Setup
+
+## 🐳 Docker Setup (Recommended)
+
+### Prerequisites
+- Docker
+- Docker Compose
+
+### Run Backend Using Docker
+
+```
+docker compose up --build
+```
+
+### Backend will be available at:
+
+```
+http://localhost:8000
+```
+
+### Swagger API Docs:
+
+```
+http://localhost:8000/docs
+```
+
+### Stop Containers
+```
+docker compose down
+```
+
+**✅ No Python, virtual environment, or manual dependency setup required**
+
+**✅ Firebase credentials are securely mounted via Docker volumes**
+
+---
+
+<p align="center">
+  <b>OR
+</p>
+
+---
+
 ### Prerequisites
 - Python 3.8 or higher
 
